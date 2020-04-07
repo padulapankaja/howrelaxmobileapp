@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class SchoolPage extends StatelessWidget{
@@ -7,8 +9,7 @@ class SchoolPage extends StatelessWidget{
     final _fontSize = 36.0;
     return Container(
       padding: EdgeInsets.all(25.0),
-      child: Text(
-        'SchoolPage', style: TextStyle(fontSize: _fontSize),),
+      child: Image.asset('assets/images/sl.jpg')
     );
   }
 
