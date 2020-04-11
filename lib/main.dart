@@ -6,82 +6,31 @@ import 'package:fluttertoast/fluttertoast.dart';
 import './Widgets/Home.dart';
 import './Widgets/Business.dart';
 import './Widgets/School.dart';
+
 import './Widgets/Work.dart';
 
+import 'Dashboard.dart';
+import './Widgets/WelcomePage.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget{
-  @override
+class MyApp extends StatelessWidget{
 
-  State<StatefulWidget> createState() {
-    return MyAppState();
-  }
 
-}
-
-class MyAppState extends State<MyApp> {
-  int _selectedPage = 0;
-  final _pageOptions = [
-//    Text('Home', style: TextStyle(fontSize: 36, fontStyle: FontStyle.normal),),
-//    Text('Business', style: TextStyle(fontSize: 36, fontStyle: FontStyle.normal),),
-//    Text('School', style: TextStyle(fontSize: 36, fontStyle: FontStyle.normal),),
-//    Text('Alarm', style: TextStyle(fontSize: 36, fontStyle: FontStyle.normal),)
-    Homepage(),
-    BusinessPage(),
-    SchoolPage(),
-    WorkPage(),
-  ];
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'newone',
+      return MaterialApp(
+        title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue
+          primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Welcome to Howrelax'),
+        debugShowCheckedModeBanner: false,
 
-          ),
-          body: _pageOptions[_selectedPage],
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.black,
-            currentIndex:  _selectedPage,
-            onTap: (int index) {
-              setState(() {
-                _selectedPage = index;
-              });
-              displayToast("You are in ${_selectedPage}");
+        home: WelcomePage(),
 
+      );
 
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text('Home'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.business),
-                title: Text('Business'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.school),
-                title: Text('School'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.work,),
-                title: Text('Alarms'),
-              )
-            ],
-            selectedItemColor: Colors.amber[800],
-            unselectedItemColor: Colors.black,
-
-          ),
-        ));
   }
 
-  void displayToast(String message){
-    Fluttertoast.showToast(msg: message);
-  }
 }
+

@@ -6,9 +6,8 @@ class Homepage extends StatelessWidget{
 
     final _fontSize = 36.0;
     return Container(
-      padding: EdgeInsets.all(25.0),
-      child: Text(
-        'HomePage', style: TextStyle(fontSize: _fontSize),),
+      padding: EdgeInsets.all(20.0),
+      child: Image.asset('assets/images/sl.jpg'),
     );
   }
 
