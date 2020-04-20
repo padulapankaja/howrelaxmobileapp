@@ -4,6 +4,9 @@ import './SignUp.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../models/user.dart';
 
+import '../Dashboard.dart';
+
+import '../Widgets/SignUp.dart';
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
   final String title;
@@ -124,11 +127,14 @@ class _LoginPageState extends State<LoginPage> {
         if(result == null){
           print('error in sign in');
           displayToast("Sign in Faild ");
-
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SignUpPage()));
         }else{
           print('sign in');
           displayToast("Sign in Success full ");
-          print(result);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Dashboard()));
+          print(result.uid);
         }
       },
       child: Container(
