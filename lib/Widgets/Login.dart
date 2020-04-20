@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/services/auth.dart';
 import './SignUp.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../models/user.dart';
@@ -11,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthService _auth = AuthService();
+
   final _formKey = GlobalKey();
   final _user = User();
   final emailController = TextEditingController();
@@ -61,18 +64,18 @@ class _LoginPageState extends State<LoginPage> {
             controller: emailController,
             obscureText: isPassword,
             decoration: InputDecoration(
-                hintText: hint,
-                border: InputBorder.none,
-                fillColor: Color(0xfff3f3f4),
-                filled: true,
-            errorText: validatePassword(emailController.text),
+              hintText: hint,
+              border: InputBorder.none,
+              fillColor: Color(0xfff3f3f4),
+              filled: true,
+              errorText: validatePassword(emailController.text),
             ),
-
           )
         ],
       ),
     );
   }
+
   String validatePassword(String value) {
     if (!(value.length > 3) && value.isNotEmpty) {
       return "Password should contains more then 3 character";
@@ -80,7 +83,8 @@ class _LoginPageState extends State<LoginPage> {
     return null;
   }
 
-  Widget _entryFieldForPassword(String title, String hint, {bool isPassword = false}) {
+  Widget _entryFieldForPassword(String title, String hint,
+      {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -97,51 +101,58 @@ class _LoginPageState extends State<LoginPage> {
             controller: passwordController,
             obscureText: isPassword,
             decoration: InputDecoration(
-                hintText: hint,
-                border: InputBorder.none,
-                fillColor: Color(0xfff3f3f4),
-                filled: true,
-                errorText: validatePassword(passwordController.text),
+              hintText: hint,
+              border: InputBorder.none,
+              fillColor: Color(0xfff3f3f4),
+              filled: true,
+              errorText: validatePassword(passwordController.text),
             ),
-
           )
         ],
       ),
     );
   }
-
-
+//==================================================== login=======================================================================
   Widget _submitButton() {
     return RaisedButton(
+      onPressed: () async {
+        String username = emailController.text;
+        String password = passwordController.text;
 
-          onPressed: () {
-            String username = emailController.text;
-            String password = passwordController.text;
-            displayToast("User name :  ${username}  | Password : ${password} ");
-          },
 
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(vertical: 15),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.grey.shade200,
-                    offset: Offset(2, 4),
-                    blurRadius: 5,
-                    spreadRadius:20)
-              ],
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [Colors.teal[400], Colors.teal[700]])),
-          child: Text(
-            'Login',
-            style: TextStyle(fontSize: 20, color: Colors.white),
-          ),
+        dynamic result = await _auth.signInAnon();
+        if(result == null){
+          print('error in sign in');
+          displayToast("Sign in Faild ");
+
+        }else{
+          print('sign in');
+          displayToast("Sign in Success full ");
+          print(result);
+        }
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 15),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: Offset(2, 4),
+                  blurRadius: 5,
+                  spreadRadius: 20)
+            ],
+            gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [Colors.teal[400], Colors.teal[700]])),
+        child: Text(
+          'Login',
+          style: TextStyle(fontSize: 20, color: Colors.white),
         ),
+      ),
     );
   }
 
@@ -280,12 +291,11 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       children: <Widget>[
         _entryFieldForPassword("Password", "Enter Password", isPassword: true),
-
       ],
     );
   }
 
-  void displayToast(String message){
+  void displayToast(String message) {
     Fluttertoast.showToast(msg: message);
   }
 
@@ -319,7 +329,7 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(
                             height: 20,
                           ),
-                        _submitButton(),
+                          _submitButton(),
                           Container(
                             padding: EdgeInsets.symmetric(vertical: 10),
                             alignment: Alignment.centerRight,

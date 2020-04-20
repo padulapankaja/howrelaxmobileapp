@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "963084827346",
+    "firebase_url": "https://howrelax-18d2f.firebaseio.com",
+    "project_id": "howrelax-18d2f",
+    "storage_bucket": "howrelax-18d2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963084827346:android:b33685a05801ee825c8b0b",
+        "android_client_info": {
+          "package_name": "com.padula.flutterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963084827346-f60t8kog6o1hu7i8v5e15m9id6k04cp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANxAU5klVkiOnaEt_sv3fWN_-ycKtBLxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963084827346-f60t8kog6o1hu7i8v5e15m9id6k04cp8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
