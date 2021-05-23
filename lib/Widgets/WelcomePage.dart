@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Dashboard.dart';
+import 'Dashboard.dart';
 import 'SignUp.dart';
 import 'Login.dart';
 
@@ -182,7 +182,7 @@ class _WelcomePageState extends State<WelcomePage> {
               SizedBox(
                 height: 20,
               ),
-              _label(),
+//              _label(),
               _powerdby()
             ],
           ),

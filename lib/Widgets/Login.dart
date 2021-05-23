@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/services/auth.dart';
 import './SignUp.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../models/user.dart';
-
-import '../Dashboard.dart';
-
+import 'Dashboard.dart';
 import '../Widgets/SignUp.dart';
+import '../config/const.dart';
+
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
   final String title;
@@ -18,12 +17,10 @@ class _LoginPageState extends State<LoginPage> {
   final AuthService _auth = AuthService();
 
   final _formKey = GlobalKey();
-  final _user = User();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -115,27 +112,15 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
 //==================================================== login=======================================================================
   Widget _submitButton() {
     return RaisedButton(
       onPressed: () async {
         String username = emailController.text;
         String password = passwordController.text;
-
-
-        dynamic result = await _auth.signInAnon();
-        if(result == null){
-          print('error in sign in');
-          displayToast("Sign in Faild ");
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignUpPage()));
-        }else{
-          print('sign in');
-          displayToast("Sign in Success full ");
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Dashboard()));
-          print(result.uid);
-        }
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -343,8 +328,8 @@ class _LoginPageState extends State<LoginPage> {
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w500)),
                           ),
-                          _divider(),
-                          _facebookButton(),
+//                          _divider(),
+//                          _facebookButton(),
                           Expanded(
                             flex: 2,
                             child: SizedBox(),

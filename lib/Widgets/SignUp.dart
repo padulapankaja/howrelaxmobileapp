@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import'./Login.dart';
+import './Login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -33,10 +33,6 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-
-
-
-
   Widget _entryField(String title, String hint, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -62,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void displayToast(String message){
+  void displayToast(String message) {
     Fluttertoast.showToast(msg: message);
   }
 
@@ -70,7 +66,6 @@ class _SignUpPageState extends State<SignUpPage> {
     return InkWell(
       onTap: () {
         displayToast("Click Register");
-
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -88,14 +83,13 @@ class _SignUpPageState extends State<SignUpPage> {
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors:  [Colors.teal[400], Colors.teal[700]])),
+                colors: [Colors.teal[400], Colors.teal[700]])),
         child: Text(
           'Register Now',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
     );
-
   }
 
   Widget _loginAccountLabel() {
@@ -154,46 +148,43 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child:Container(
-              height: MediaQuery.of(context).size.height,
-              child:Stack(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          flex: 3,
-                          child: SizedBox(),
-                        ),
-                        _title(),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        _emailPasswordWidget(),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        _submitButton(),
-                        Expanded(
-                          flex: 2,
-                          child: SizedBox(),
-                        )
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: _loginAccountLabel(),
-                  ),
-                  Positioned(top: 40, left: 0, child: _backButton()),
-
-                ],
-              ),
-            )
-        )
-    );
+            child: Container(
+      height: MediaQuery.of(context).size.height,
+      child: Stack(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  flex: 3,
+                  child: SizedBox(),
+                ),
+                _title(),
+                SizedBox(
+                  height: 50,
+                ),
+                _emailPasswordWidget(),
+                SizedBox(
+                  height: 20,
+                ),
+                _submitButton(),
+                Expanded(
+                  flex: 2,
+                  child: SizedBox(),
+                )
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: _loginAccountLabel(),
+          ),
+          Positioned(top: 40, left: 0, child: _backButton()),
+        ],
+      ),
+    )));
   }
 }
