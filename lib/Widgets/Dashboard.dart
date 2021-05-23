@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'Home.dart';
-import 'Business.dart';
-import 'School.dart';
-import 'Work.dart';
-
+import './Home.dart';
+import './Business.dart';
+import './School.dart';
+import './Work.dart';
+import '../config/const.dart';
 class Dashboard extends StatefulWidget {
   @override
   _Dashboard createState() => _Dashboard();
@@ -21,14 +21,17 @@ class _Dashboard extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'newone',
+          debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue),
         home: Scaffold(
           appBar: AppBar(
-            title: Text('Welcome to Howrelax'),
+            title: Text(''),
+            backgroundColor: Colors.teal[400],
           ),
           body: _pageOptions[_selectedPage],
           bottomNavigationBar: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             backgroundColor: Colors.black,
             currentIndex: _selectedPage,
             onTap: (int index) {
@@ -54,7 +57,7 @@ class _Dashboard extends State<Dashboard> {
                 icon: Icon(
                   Icons.work,
                 ),
-                title: Text('Account'),
+                title: Text('')
               )
             ],
             selectedItemColor: Colors.amber[800],

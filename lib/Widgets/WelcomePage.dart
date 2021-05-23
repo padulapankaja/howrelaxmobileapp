@@ -67,22 +67,26 @@ class _WelcomePageState extends State<WelcomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Text(
-            'Powered by',
-            style: TextStyle(color: Colors.white, fontSize: 15),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Image.asset(
-            'assets/images/logo.png',
-            height: 70,
-            width: 70,
-            fit: BoxFit.fitWidth,
-            colorBlendMode: BlendMode.darken,
-          ),
+        Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Text(
+                'Powered by',
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset(
+                'assets/images/logo.png',
+                height: 70,
+                width: 70,
+                fit: BoxFit.fitWidth,
+                colorBlendMode: BlendMode.darken,
+              ),
+            )
+          ],
         )
       ],
     );
@@ -183,6 +187,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 height: 20,
               ),
 //              _label(),
+
               _powerdby()
             ],
           ),
