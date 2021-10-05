@@ -1,4 +1,4 @@
 class UserModal {
-  final String uid;
+  final String? uid;
   UserModal({this.uid});
 }
