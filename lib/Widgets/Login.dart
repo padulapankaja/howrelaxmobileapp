@@ -7,8 +7,8 @@ import '../Widgets/SignUp.dart';
 import '../config/const.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key, this.title}) : super(key: key);
-  final String title;
+  LoginPage({Key? key, this.title}) : super(key: key);
+  final String? title;
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  String validatePassword(String value) {
+  String? validatePassword(String value) {
     if (!(value.length > 3) && value.isNotEmpty) {
       return "Password should contains more then 3 character";
     }
@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors: [Colors.teal[400], Colors.teal[700]])),
+                colors: [Colors.teal[400]!, Colors.teal[700]!])),
         child: Text(
           'Login',
           style: TextStyle(fontSize: 20, color: Colors.white),

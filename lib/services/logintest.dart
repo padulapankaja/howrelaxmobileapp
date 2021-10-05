@@ -14,8 +14,8 @@ import 'package:path/path.dart' as path;
 import 'package:http/http.dart' as http;
 
 class Response {
-  final String token;
-  final String message;
+  final String? token;
+  final String? message;
 
   Response({this.token, this.message});
 
@@ -25,10 +25,10 @@ class Response {
 }
 
 class User {
-  final String name;
-  final String email;
+  final String? name;
+  final String? email;
   final DateTime createdAt;
-  final String imageUrl;
+  final String? imageUrl;
 
   User.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -49,7 +49,7 @@ class MyHttpException extends HttpException {
 
 class ApiService {
   static const String baseUrl = 'http://localhost:4000';
-  static ApiService instance;
+  static ApiService? instance;
   factory ApiService() => instance ??= ApiService._internal();
   ApiService._internal();
 
@@ -86,7 +86,7 @@ class NetworkUtils {
   }
 
   static Future _helper(String method, Uri url,
-      {Map<String, String> headers, Map<String, String> body}) async {
+      {Map<String, String>? headers, Map<String, String>? body}) async {
     final request = new http.Request(method, url);
     if (body != null) {
       request.bodyFields = body;
@@ -108,7 +108,7 @@ class NetworkUtils {
     return decoded;
   }
 
-  static Future put(Uri url, {Map<String, String> headers, body}) {
+  static Future put(Uri url, {Map<String, String>? headers, body}) {
     return _helper('PUT', url, headers: headers, body: body);
   }
 }
