@@ -3,9 +3,9 @@ import './Login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUpPage extends StatefulWidget {
-  SignUpPage({Key key, this.title}) : super(key: key);
+  SignUpPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -83,7 +83,7 @@ class _SignUpPageState extends State<SignUpPage> {
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors: [Colors.teal[400], Colors.teal[700]])),
+                colors: [Colors.teal[400]!, Colors.teal[700]!])),
         child: Text(
           'Register Now',
           style: TextStyle(fontSize: 20, color: Colors.white),

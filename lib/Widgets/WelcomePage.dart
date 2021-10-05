@@ -4,9 +4,9 @@ import 'SignUp.dart';
 import 'Login.dart';
 
 class WelcomePage extends StatefulWidget {
-  WelcomePage({Key key, this.title}) : super(key: key);
+  WelcomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _WelcomePageState createState() => _WelcomePageState();
@@ -169,7 +169,7 @@ class _WelcomePageState extends State<WelcomePage> {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.teal[400], Colors.teal[700]])),
+                  colors: [Colors.teal[400]!, Colors.teal[700]!])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
